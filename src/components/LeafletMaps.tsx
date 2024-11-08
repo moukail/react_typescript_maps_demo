@@ -52,7 +52,7 @@ const LeafletMaps = () => {
                                 }}
                             >
                                 <MapContainer
-                                    center={[52.3676, 4.9041]}
+                                    center={[ipAddr.lat, ipAddr.lon]}
                                     zoom={13}
                                     scrollWheelZoom={true}
                                     style={{ width: '100%', height: '100%' }}
@@ -61,7 +61,7 @@ const LeafletMaps = () => {
                                         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                                     />
-                                    <Marker position={[52.3676, 4.9041]} />
+                                    <Marker position={[ipAddr.lat, ipAddr.lon]} />
                                 </MapContainer>
                             </Box>
                         </Grid2>
