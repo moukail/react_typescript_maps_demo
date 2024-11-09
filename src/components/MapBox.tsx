@@ -32,7 +32,7 @@ function MapBox() {
             container: mapContainerRef.current as HTMLDivElement,
             style: 'mapbox://styles/mapbox/light-v11',
             center: [ipAddr.lon, ipAddr.lat], // Set initial center to New York City
-            zoom: 12,
+            zoom: 13,
         });
 
         // Add a marker to the map

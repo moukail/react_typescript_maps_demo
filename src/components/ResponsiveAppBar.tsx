@@ -135,6 +135,9 @@ export default function ResponsiveAppBar() {
                             </Button>
                         ))}*/}
                         <Button sx={{ my: 2, color: 'white', display: 'block' }} href="/">
+                            Home
+                        </Button>
+                        <Button sx={{ my: 2, color: 'white', display: 'block' }} href="/mapbox">
                             MapBox
                         </Button>
                         <Button sx={{ my: 2, color: 'white', display: 'block' }} href="/here-maps">
