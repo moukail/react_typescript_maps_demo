@@ -6,7 +6,7 @@ import Maps from "./Maps.tsx";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN as string;
 
-function MapBox() {
+function MapBox({width , height}: {width:string, height: string}) {
     const [ipAddr, setIpAddr] = useState<IpAddress | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const mapContainerRef = useRef<HTMLDivElement>(null);
@@ -47,7 +47,7 @@ function MapBox() {
     }, [ipAddr]);
 
     return (
-        <Maps mapContainerRef={mapContainerRef} loading={loading} ipAddr={ipAddr} />
+        <Maps width={width} height={height} mapContainerRef={mapContainerRef} loading={loading} ipAddr={ipAddr} />
     );
 }
 

@@ -4,7 +4,7 @@ import {IpAddress} from "../types/ip-address.type.ts";
 import {getIpAddress} from "../services/ipAddress.ts";
 import Maps from "./Maps.tsx";
 
-const HereMaps = () => {
+const HereMaps = ({width , height}: {width:string, height: string}) => {
     const [ipAddr, setIpAddr] = useState<IpAddress | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
@@ -63,7 +63,7 @@ const HereMaps = () => {
     }, [ipAddr]);
 
     return (
-        <Maps mapContainerRef={mapContainerRef} loading={loading} ipAddr={ipAddr} />
+        <Maps width={width} height={height} mapContainerRef={mapContainerRef} loading={loading} ipAddr={ipAddr} />
     );
 }
 export default HereMaps;

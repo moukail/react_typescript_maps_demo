@@ -19,8 +19,8 @@ createRoot(document.getElementById('root')!).render(
                 <Routes>
                     <Route path="/" element={<Layout />} >
                         <Route index element={<Home />} />
-                        <Route path="/mapbox" element={<MapBox />} />
-                        <Route path="/here-maps" element={<HereMaps />} />
+                        <Route path="/mapbox" element={<MapBox width='100vw' height='100vh' />} />
+                        <Route path="/here-maps" element={<HereMaps width='100vw' height='100vh' />} />
                         <Route path="/leaflet-maps" element={<LeafletMaps />} />
                         <Route path="/google-maps" element={<GoogleMaps />} />
                     </Route>

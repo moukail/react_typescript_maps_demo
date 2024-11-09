@@ -1,11 +1,8 @@
-import React, {useRef, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import {Box, Divider, IconButton, styled} from "@mui/material";
 import SwapHorizIcon from '@mui/icons-material/SwapHoriz';
-
-interface ImageSliderProps {
-    leftSrc: string;
-    rightSrc: string;
-}
+import MapBox from "./MapBox.tsx";
+import HereMaps from "./HereMaps.tsx";
 
 const SliderContainer = styled(Box)({
     position: 'relative',
@@ -15,18 +12,8 @@ const SliderContainer = styled(Box)({
     display: 'flex',
 });
 
-const Iframe = styled('iframe')({
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: '100%',
-    border: 0,
-    // To scale the content proportionally
-    transformOrigin: '0 0', // Maintain top-left origin for scaling
-});
+const ImageSlider = () => {
 
-const ImageSlider = ({ leftSrc, rightSrc }: ImageSliderProps) => {
     const [sliderPosition, setSliderPosition] = useState(50); // Initial position at 50%
     const containerRef = useRef<HTMLDivElement | null>(null);
     const isDragging = useRef(false);
@@ -49,7 +36,6 @@ const ImageSlider = ({ leftSrc, rightSrc }: ImageSliderProps) => {
             const containerRect = containerRef.current.getBoundingClientRect();
             const newSliderPosition = ((e.clientX - containerRect.left) / containerRect.width) * 100;
             setSliderPosition(Math.max(0, Math.min(100, newSliderPosition))); // Keep within bounds (0 to 100)
-            console.log('newSliderPosition', newSliderPosition);
         }
     };
 
@@ -59,25 +45,28 @@ const ImageSlider = ({ leftSrc, rightSrc }: ImageSliderProps) => {
                 ref={containerRef}
                 sx={{height: 400, width: '100%', boxShadow: 3}}
             >
-                {/* Left Iframe */}
-                <Iframe
-                    src={leftSrc}
-                    style={{
+                <Box
+                    sx={{
                         clipPath: `inset(0 ${100 - sliderPosition}% 0 0)`,
-                        width: '100%', height: '560px'
+                        //backgroundColor: 'lightblue',
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
                     }}
-                    title="Left Side"
-                />
-
-                {/* Right Iframe */}
-                <Iframe
-                    src={rightSrc}
-                    style={{
+                >
+                    <HereMaps width='100%' height='500px' />
+                </Box>
+                <Box
+                    sx={{
                         clipPath: `inset(0 0 0 ${sliderPosition}%)`,
-                        width: '100%', height: '560px'
+                        //backgroundColor: 'lightcoral',
+                        position: 'absolute',
+                        width: '100%',
+                        height: '100%',
                     }}
-                    title="Right Side"
-                />
+                >
+                    <MapBox width='100%' height='500px' />
+                </Box>
 
                 <Divider
                     component="div"
@@ -109,7 +98,6 @@ const ImageSlider = ({ leftSrc, rightSrc }: ImageSliderProps) => {
 
             </SliderContainer>
         </>
-
     );
 }
 

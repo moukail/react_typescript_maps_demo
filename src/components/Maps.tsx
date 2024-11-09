@@ -3,17 +3,19 @@ import {IpAddress} from "../types/ip-address.type.ts";
 import {RefObject} from "react";
 
 type MapsProps = {
+    width: string,
+    height: string,
     mapContainerRef: RefObject<HTMLDivElement>,
     loading: boolean,
     ipAddr: IpAddress | null,
 }
 
-const Maps = ({mapContainerRef, loading, ipAddr}: MapsProps) => {
+const Maps = ({width, height, mapContainerRef, loading, ipAddr}: MapsProps) => {
     return (
         <>
             <Box ref={mapContainerRef} sx={{
-                width: '100vw',   // Full viewport width
-                height: '100vh',  // Full viewport height
+                width: width, //'100vw',   // Full viewport width
+                height: height, //'100vh',  // Full viewport height
                 position: 'absolute',
                 opacity: 0.5,
                 top: 0,
